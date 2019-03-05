@@ -42,7 +42,7 @@
 						---
 						## そんな時には
 						<br/>
-						### クラウドサービスを使え！！
+						### クラウドのサービスを使いましょう！
 						---
 						## Ambientの紹介
 						<br/>
@@ -59,23 +59,96 @@
 						## 使い方は簡単
 						--
 						### まずはユーザ登録（無料）
+						<br/>
+						メールアカウントだけで2～3分で登録完了
 
 						[https://ambidata.io/usr/signup.html](https://ambidata.io/usr/signup.html)
 						--
 						### 次はチャンネル作成
+						<br/>
+						ブラウザから簡単操作でチャンネル作成
 
 						![image](./images/image02.jpg)
 						--
 						### つづいてデータの送信
+						<br/>
+						Pythonでコードを書くとこのような感じ
 
 						```py
+						import time
+						from math import cos, radians, sin
+						import ambient
+						
 						def main():
-						    pass
+							am = ambient.Ambient('channel_id', 'write_key')
+						
+							count = 0
+							while True:
+								_ = am.send({'d1': sin(radians(count)) * 10,
+											 'd2': cos(radians(count)) * 10})
+								count += 0.1
+								count = 0 if count > 360 else count
+								time.sleep(30)
+						
+						if __name__ == "__main__":
+							main()
 						```
 						--
 						### 最後に可視化(グラフ化)
+						<br/>
+						簡単なグラフなら即座に表示できる
 
 						![image](./images/image03.jpg)
+						--
+						### 他にもこんな可視化も
+						<br/>
+						GPSの位置情報を付加すると地図にも載せれる
+
+						![image](./images/image04.jpg)
+						---
+						## 開発可能な言語
+						<br/>
+						これらはライブラリが提供されています
+
+						* C++(Arduino，mbed)
+						* Python
+						* Node.js
+						* Node-RED
+						--
+						### PythonとかNode.jsが使えたら
+						### いいんじゃない：）
+						--
+						### ちなみにライブラリを使わなくても
+						### 簡単にやれちゃう
+						--
+						### JSONにWrite KeyをつけてPOSTするだけ
+						<br/>
+						Pythonだとrequestsパッケージのpostメソッドを使うだけ
+						```py
+						import requests
+						
+						def main():
+							channel_id = 'channel_id'
+							url = f'http://ambidata.io/api/v2/channels/{channel_id}/dataarray'
+							write_key = 'write_key'
+							data = 42
+							_ = requests.post(url, json={'writeKey': write_key, 'd1': data})
+
+						if __name__ == "__main__":
+							main()
+						```
+						---
+						## まとめ
+						<br/>
+						Ambientを使うとRaspberry Piから
+						
+						センサーの値などをお手軽にクラウド上に
+						
+						蓄積できてグラフ化もできるよ：）
+						--
+						## それからPython使おう！！
+
+						![image](./images/image05.jpg)
 						---
 						## Thank U for Reading
 					</textarea>
