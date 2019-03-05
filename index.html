@@ -28,15 +28,13 @@
 					<textarea data-template>
 						## お手軽にIoTデータの可視化
 						<br/>
-						### tsutsu
+						## tsutsu
 						---
 						## 今日話すこと
 						<br/>
-						Raspberry Piを使ってセンサーから
-						
-						読み取ったデータを蓄積して
-
-						簡単に可視化する方法
+						### Raspberry Piを使ってセンサーから
+						### 読み取ったデータを蓄積して
+						### 簡単に可視化する方法
 						--
 						## 簡単にやりたい！！
 						---
@@ -46,42 +44,36 @@
 						---
 						## Ambientの紹介
 						<br/>
-						マイコンなどから送られるセンサーデーターを
-
-						受信し，蓄積し，可視化(グラフ化)する
-
-						IoTデーター可視化サービス
+						### マイコンなどから送られるセンサーデーターを
+						### 受信し，蓄積し，可視化(グラフ化)する
+						### IoTデーター可視化サービス
 						--
 						### IoTデーターの可視化サービス
-
 						![image](./images/image01.jpg)
 						---
 						## 使い方は簡単
 						--
-						### まずはユーザ登録（無料）
+						## まずはユーザ登録（無料）
 						<br/>
-						メールアカウントだけで2～3分で登録完了
-
+						### メールアカウントだけで2～3分で登録完了
 						[https://ambidata.io/usr/signup.html](https://ambidata.io/usr/signup.html)
 						--
-						### 次はチャンネル作成
+						## 次はチャンネル作成
 						<br/>
-						ブラウザから簡単操作でチャンネル作成
-
+						### ブラウザから簡単操作でチャンネル作成
 						![image](./images/image02.jpg)
 						--
-						### つづいてデータの送信
+						## つづいてデータの送信
 						<br/>
-						Pythonでコードを書くとこのような感じ
-
+						### Pythonでコードを書くとこのような感じ
 						```py
 						import time
 						from math import cos, radians, sin
 						import ambient
-						
+
 						def main():
 							am = ambient.Ambient('channel_id', 'write_key')
-						
+
 							count = 0
 							while True:
 								_ = am.send({'d1': sin(radians(count)) * 10,
@@ -89,44 +81,41 @@
 								count += 0.1
 								count = 0 if count > 360 else count
 								time.sleep(30)
-						
+
 						if __name__ == "__main__":
 							main()
 						```
 						--
-						### 最後に可視化(グラフ化)
+						## 最後に可視化(グラフ化)
 						<br/>
-						簡単なグラフなら即座に表示できる
-
+						### 簡単なグラフなら即座に表示できる
 						![image](./images/image03.jpg)
 						--
-						### 他にもこんな可視化も
+						## 他にもこんな可視化も
 						<br/>
-						GPSの位置情報を付加すると地図にも載せれる
-
+						### GPSの位置情報を付加すると地図にも載せれる
 						![image](./images/image04.jpg)
 						---
 						## 開発可能な言語
 						<br/>
-						これらはライブラリが提供されています
-
+						### これらはライブラリが提供されています
 						* C++(Arduino，mbed)
 						* Python
 						* Node.js
 						* Node-RED
 						--
-						### PythonとかNode.jsが使えたら
-						### いいんじゃない：）
+						## PythonとかNode.jsが使えたら
+						## いいんじゃない：）
 						--
-						### ちなみにライブラリを使わなくても
-						### 簡単にやれちゃう
+						## ちなみにライブラリを使わなくても
+						## 簡単にやれちゃう
 						--
-						### JSONにWrite KeyをつけてPOSTするだけ
+						## ライブラリを使わない例
 						<br/>
-						Pythonだとrequestsパッケージのpostメソッドを使うだけ
+						### JSONにWrite KeyをつけてPOSTするだけ
 						```py
 						import requests
-						
+
 						def main():
 							channel_id = 'channel_id'
 							url = f'http://ambidata.io/api/v2/channels/{channel_id}/dataarray'
@@ -140,14 +129,11 @@
 						---
 						## まとめ
 						<br/>
-						Ambientを使うとRaspberry Piから
-						
-						センサーの値などをお手軽にクラウド上に
-						
-						蓄積できてグラフ化もできるよ：）
+						### Ambientを使うとRaspberry Piから
+						### センサーの値をお手軽にクラウド上に
+						### 蓄積できてグラフ化もできるよ：）
 						--
-						## それからPython使おう！！
-
+						## I Love Python💛
 						![image](./images/image05.jpg)
 						---
 						## Thank U for Reading
