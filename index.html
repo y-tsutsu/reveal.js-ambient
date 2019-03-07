@@ -109,7 +109,7 @@
 						* Node-RED
 						--
 						## PythonとかNode.jsが使えたら
-						## いいんじゃない：）
+						## いいんじゃない！？
 						--
 						## ちなみにライブラリを使わなくても
 						## 簡単にやれちゃいます
@@ -124,8 +124,8 @@
 							channel_id = 'channel_id'
 							url = f'http://ambidata.io/api/v2/channels/{channel_id}/dataarray'
 							write_key = 'write_key'
-							data = 42
-							_ = requests.post(url, json={'writeKey': write_key, 'd1': data})
+							data = [{'d1': 42}]
+							_ = requests.post(url, json={'writeKey': write_key, 'data': data})
 
 						if __name__ == "__main__":
 							main()
@@ -135,7 +135,7 @@
 						<br/>
 						### Ambientを使うとRaspberry Piから
 						### センサーの値をお手軽にクラウド上に
-						### 蓄積できてグラフ化もできるよ：）
+						### 蓄積できてグラフ化もできました！
 						--
 						## I Love Python💛
 						![image](./images/image05.jpg)
